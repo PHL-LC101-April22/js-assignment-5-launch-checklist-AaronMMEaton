@@ -1,13 +1,11 @@
 // Write your helper functions here!
-
 require('isomorphic-fetch');
 
+
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-   // Here is the HTML formatting for our mission target div.
-   /*
-          
-   
-   document.getElementById("missionTarget").innerHTML = `
+    //    Here is the HTML formatting for our mission target div.
+       
+         document.getElementById("missionTarget").innerHTML = `
          <h2>Mission Destination</h2>
         <ol>
             <li>Name: ${name} </li>
@@ -18,22 +16,23 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         </ol>
             <img src="${imageUrl}">
         `
-    } 
+    }
+    
 
 
 
-function validateInput(testInput) {
-    let numberInput = Number(testInput);
-       if(testInput == ""){
-         return "Empty";
-       }else if(isNaN(numberInput)){
-         return "Not a Number";
-       }else if(!isNaN(numberInput)){
-         return "Is a Number";
-       }
+    function validateInput(testInput) {
+        let validationResponse = ["Empty", "Not a Number", "Is a Number"];
+        if (testInput === "" || testInput === undefined) {
+            return validationResponse[0];
+        }
+        if (isNaN(testInput)) {
+            return validationResponse[1];
+        } else {
+            return validationResponse[2];
+        }
+    }
  
- }
-
  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
  
      if(validateInput(pilot) == "Empty" || validateInput(copilot) == "Empty" || validateInput(fuelLevel) == "Empty" || validateInput(cargoLevel) == "Empty"){
@@ -49,6 +48,7 @@ function validateInput(testInput) {
          document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
          document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
          list.style.visibility = "visible";
+         
          if(fuelLevel > 10000 && cargoLevel < 10000){
              document.getElementById("launchStatus").innerHTML = `Shuttle is ready for launch`;
              document.getElementById("launchStatus").style.color = "green";
@@ -71,7 +71,7 @@ function validateInput(testInput) {
      }
  
  }
-
+ 
 
  async function myFetch() {
     let planetsReturned;
@@ -88,9 +88,9 @@ function pickPlanet(planets) {
     return planets[onePlanet];
 }
 
+
 module.exports.addDestinationInfo = addDestinationInfo;
 module.exports.validateInput = validateInput;
 module.exports.formSubmission = formSubmission;
 module.exports.pickPlanet = pickPlanet; 
 module.exports.myFetch = myFetch;
-*/}
